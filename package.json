@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "name": "dataexpress",
   "version": "1.0.0",
   "description": "",
@@ -22,4 +23,9 @@
     "url": "https://github.com/jbakerNeumont/DataExpress/issues"
   },
   "homepage": "https://github.com/jbakerNeumont/DataExpress#readme"
+=======
+  "dependencies": {
+    "express-session": "^1.17.2"
+  }
+>>>>>>> Stashed changes
 }
