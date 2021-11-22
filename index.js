@@ -33,12 +33,10 @@ app.get('/', (req, res) => {
         res.send('Users first time on site, give create user');
         visited = 0;
     }
-})
+});
 
 const urlencoderParser = express.urlencoded({
     extended: false
 });
-
-app.get('/', routes.index);
 
 app.listen(3000);
