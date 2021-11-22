@@ -1,0 +1,32 @@
+//- Still needs form action and questions/answers
+extends layout 
+
+block content 
+    div(class="newUserPage")
+        form(method='post')
+            p Username:
+                br
+                input(type='text' name='username')
+            p Password:
+                br
+                input(type='text' name='password')
+            p Email:
+                br
+                input(type='text' name='email')
+            p Age:
+                br
+                input(type='number' name='age')
+            P Q1 
+                br
+                label(for="Q1A1") Option 1
+                input(type="radio" name="Q1A1" id="Q1A1")
+            P Q2 
+                br
+                label(for="Q2A1") Option 1
+                input(type="radio" name="Q2A1" id="Q2A1")
+            P Q3 
+                br
+                label(for="Q3A1") Option 1
+                input(type="radio" name="Q3A1" id="Q3A1")
+            p 
+                input(type='submit' value='Create User')

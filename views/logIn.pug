@@ -1,0 +1,14 @@
+//- Still needs form action
+extends layout
+
+block content 
+    div(class="loginPage")
+        form(method='post')
+            p Username:
+                br
+                input(type='text' name='username')
+            p Password:
+                br
+                input(type='text' name='password')
+            p 
+                input(type='submit' value='Log In')
