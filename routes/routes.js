@@ -21,7 +21,7 @@ exports.createLogin = (req, res) => {
     res.render('newUser')
 }
 
-exports.createAccount = (req, res) => {
+exports.createAccount = async (req, res) => {
     let newUser = {
         username: req.body.username,
         password: hashbrown(req.body.password),
