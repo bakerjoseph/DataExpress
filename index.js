@@ -37,7 +37,7 @@ app.get('/index', (req, res) => {
         res.cookie('beenHereBefore', 'yes', { maxAge: 99999999999999 });
         //have not been before show create user
         visited = 0;
-        res.redirect('/createAccount');
+        res.redirect('/login');
 
     }
 });
@@ -49,11 +49,10 @@ const checkAuth = (req, res, next) => {
     } else {
         res.redirect('/login');
     }
-}
-
+};
 
 //-------------------Login------------------------------
-app.get('/login', routes.login)
+app.get('/login', routes.login);
 
 app.post('/login', urlencoderParser, (req, res) => {
     let username = req.body.username;
