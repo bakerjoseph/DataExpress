@@ -17,9 +17,11 @@ exports.login = (req, res) => {
 
 }
 
-exports.createAccount = (req, res) => {
+exports.createLogin = (req, res) => {
     res.render('newUser')
+}
 
+exports.createAccount = (req, res) => {
     let newUser = {
         username: req.body.username,
         password: hashbrown(req.body.password),

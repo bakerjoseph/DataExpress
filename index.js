@@ -85,9 +85,9 @@ app.get('/logout', (req, res) => {
 });
 
 //-------------------Create User------------------------
-app.post('/newUser', urlencoderParser, routes.createLogin)
+app.get('/newUser', routes.createLogin)
+app.post('/newUser', urlencoderParser, routes.createAccount)
 
-app.get('/index', routes.index);
 app.get('/api', routes.api);
 
 app.listen(3000);
