@@ -14,7 +14,7 @@ exports.index = (req, res) => {
 
 exports.login = (req, res) => {
     res.render('login')
-    
+
 }
 
 exports.createAccount = (req, res) => {
@@ -25,9 +25,9 @@ exports.createAccount = (req, res) => {
         password: hashbrown(req.body.password),
         email: req.body.email,
         age: req.body.age,
-        ans1: req.body.ans1,
-        ans2: req.body.ans2,
-        ans3: req.body.ans3
+        ans1: req.body.Q1,
+        ans2: req.body.Q2,
+        ans3: req.body.Q3
     }
     await collection.insertOne(newUser);
     client.close();
@@ -42,6 +42,10 @@ exports.createAccount = (req, res) => {
     }
 }
 
+// Get username's password
 exports.api = async (req, res) => {
-    await client
+    await client.connect();
+    const result = await collection.findOne({ "username": req.params.username });
+    client.close();
+    res.send(result.password);
 }

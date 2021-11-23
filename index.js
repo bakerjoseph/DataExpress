@@ -20,6 +20,10 @@ app.use(expressSession({
 app.use(cookieParser('s0m3th1ng'));
 let visited = 0;
 
+const urlencoderParser = express.urlencoded({
+    extended: false
+});
+
 //---------------------Cookies----------------------------
 app.get('/index', (req, res) => {
     visited++;
@@ -34,9 +38,9 @@ app.get('/index', (req, res) => {
         //have not been before show create user
         visited = 0;
         res.redirect('/createAccount');
-        
+
     }
-})
+});
 
 //------------------Authentication----------------------
 const checkAuth = (req, res, next) => {
@@ -55,14 +59,14 @@ app.post('/login', urlencoderParser, (req, res) => {
     let username = req.body.username;
     let loginbanana = req.body.password;
     //needs fixing
-    let url = `http://localhost:3000/api?username=${username}`
-    if (bcrypt.compareSync(loginbanana, fetch(url))){
+    let url = `http://localhost:3000/api?username=${username}`;
+    if (bcrypt.compareSync(loginbanana, fetch(url))) {
         req.session.user = {
             isAuthenticated: true,
             username: req.body.username
         }
         res.redirect('/index');
-    } else{
+    } else {
         //login information is not valid
         console.log("Login information is incorrect")
         res.redirect('/login');
@@ -72,31 +76,20 @@ app.post('/login', urlencoderParser, (req, res) => {
 //------------------Logout--------------------------------
 app.get('/logout', (req, res) => {
     req.session.destroy(err => {
-        if(err) {
+        if (err) {
             console.log(err);
-        }else {
-            res.redirect('/index')
+        } else {
+            res.redirect('/login')
         }
     })
-})
+});
 
 //-------------------Create User------------------------
-app.post('/newUser', urlencodedParser, routes.createLogin)
-var path = __dirname + '/public/';
+app.post('/newUser', urlencoderParser, routes.createLogin)
 
 app.get('/index', routes.index);
 app.get('/api', routes.api);
 
 app.listen(3000);
 
-
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-
 console.log('Running at Port 3000');
-
-
-const urlencoderParser = express.urlencoded({
-    extended: false
-});
-
-app.listen(3000);
