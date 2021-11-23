@@ -54,6 +54,7 @@ app.get('/login', routes.login)
 app.post('/login', urlencodedParser, (req, res) => {
     let username = req.body.username;
     let loginbanana = req.body.password;
+    //needs fixing
     let url = `http://localhost:3000/api?username=${username}`
     if (bcrypt.compareSync(loginbanana, fetch(url))){
         req.session.user = {
