@@ -22,6 +22,14 @@ exports.createLogin = (req, res) => {
 }
 
 exports.createAccount = (req, res) => {
+    //--------------------Hash & Salt-----------------------
+    // Sychronous
+
+    const hashbrown = banana => {
+        let salt = bcrypt.genSaltSync(10);
+        let hashbrown = bcrypt.hashSync(banana, salt)
+        return hashbrown;
+    }
     let newUser = {
         username: req.body.username,
         password: hashbrown(req.body.password),
@@ -34,14 +42,6 @@ exports.createAccount = (req, res) => {
     await collection.insertOne(newUser);
     client.close();
     res.redirect('/index')
-    //--------------------Hash & Salt-----------------------
-    // Sychronous
-
-    const hashbrown = banana => {
-        let salt = bcrypt.genSaltSync(10);
-        let hashbrown = bcrypt.hashSync(banana, salt)
-        return hashbrown;
-    }
 }
 
 // Get username's password
