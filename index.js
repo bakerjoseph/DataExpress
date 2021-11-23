@@ -51,7 +51,7 @@ const checkAuth = (req, res, next) => {
 //-------------------Login------------------------------
 app.get('/login', routes.login)
 
-app.post('/login', urlencodedParser, (req, res) => {
+app.post('/login', urlencoderParser, (req, res) => {
     let username = req.body.username;
     let loginbanana = req.body.password;
     //needs fixing
@@ -82,12 +82,7 @@ app.get('/logout', (req, res) => {
 
 //-------------------Create User------------------------
 app.post('/newUser', urlencodedParser, routes.createLogin)
-
-app.get('/logout', routes.logout)
-
 var path = __dirname + '/public/';
-
-
 
 app.get('/index', routes.index);
 app.get('/api', routes.api);

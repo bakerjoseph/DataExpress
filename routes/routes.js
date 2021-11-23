@@ -1,3 +1,4 @@
+const { application } = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 
 const url = 'mongodb://localhost:27017';
@@ -31,12 +32,16 @@ exports.createAccount = (req, res) => {
     await collection.insertOne(newUser);
     client.close();
     res.redirect('/index')
-//--------------------Hash & Salt-----------------------
-// Sychronous
+    //--------------------Hash & Salt-----------------------
+    // Sychronous
 
-const hashbrown = banana => {
-    let salt = bcrypt.genSaltSync(10);
-    let hashbrown = bcrypt.hashSync(banana, salt)
-    return hashbrown;
+    const hashbrown = banana => {
+        let salt = bcrypt.genSaltSync(10);
+        let hashbrown = bcrypt.hashSync(banana, salt)
+        return hashbrown;
+    }
 }
+
+exports.api = async (req, res) => {
+    await client
 }
