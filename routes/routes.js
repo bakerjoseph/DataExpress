@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const { MongoClient, ObjectId } = require('mongodb');
 
-const url = 'mongodb+srv://user:dataexpress1-@cluster0.2jez0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const url = 'mongodb+srv://user:dataexpress1-@cluster0.2jez0.mongodb.net/Userdb?retryWrites=true&w=majority';
 const client = new MongoClient(url);
 
 const dbName = 'Userdb';
@@ -39,6 +39,7 @@ exports.createAccount = async (req, res) => {
         ans2: req.body.Q2,
         ans3: req.body.Q3
     }
+    await client.connect();
     await collection.insertOne(newUser);
     client.close();
     res.redirect('/index')
