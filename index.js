@@ -4,6 +4,7 @@ const expressSession = require('express-session');
 const path = require('path');
 const routes = require('./routes/routes');
 const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt')
 
 const app = express();
 

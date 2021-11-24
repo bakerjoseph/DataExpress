@@ -1,4 +1,4 @@
-const { application } = require('express');
+const bcrypt = require('bcrypt')
 const { MongoClient, ObjectId } = require('mongodb');
 
 const url = 'mongodb://localhost:27017';
@@ -21,7 +21,7 @@ exports.createLogin = (req, res) => {
     res.render('newUser')
 }
 
-exports.createAccount = (req, res) => {
+exports.createAccount = async (req, res) => {
     //--------------------Hash & Salt-----------------------
     // Sychronous
 
