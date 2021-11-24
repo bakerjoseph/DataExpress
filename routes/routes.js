@@ -1,4 +1,4 @@
-const { application } = require('express');
+const bcrypt = require('bcrypt')
 const { MongoClient, ObjectId } = require('mongodb');
 
 const url = 'mongodb+srv://user:dataexpress1-@cluster0.2jez0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
