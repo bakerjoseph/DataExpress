@@ -1,7 +1,7 @@
 const { application } = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb+srv://user:dataexpress1-@cluster0.2jez0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const client = new MongoClient(url);
 
 const dbName = 'Userdb';
@@ -21,7 +21,7 @@ exports.createLogin = (req, res) => {
     res.render('newUser')
 }
 
-exports.createAccount = (req, res) => {
+exports.createAccount = async (req, res) => {
     //--------------------Hash & Salt-----------------------
     // Sychronous
 
