@@ -34,7 +34,9 @@ app.get('/index', (req, res) => {
     if (req.cookies.beenHereBefore == 'yes') {
         //have been before show login page
         checkAuth;
-        res.send(`Visited ${req.cookies.visited} times.`);
+        res.render('index', {
+            visitedCount: req.cookies.visited
+        });
     } else {
         res.cookie('beenHereBefore', 'yes', { maxAge: 99999999999999 });
         //have not been before show create user
@@ -70,7 +72,7 @@ app.post('/login', urlencoderParser, async (req, res) => {
             isAuthenticated: true,
             username: req.body.username
         }
-        res.redirect('/index');
+        res.render('/index');
     } else {
         //login information is not valid
         console.log("Login information is incorrect")
