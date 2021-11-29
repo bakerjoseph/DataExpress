@@ -8,6 +8,15 @@ const dbName = 'Userdb';
 const db = client.db(dbName);
 const collection = db.collection('Users');
 
+//--------------------Hash & Salt-----------------------
+// Sychronous
+
+const hashbrown = banana => {
+    let salt = bcrypt.genSaltSync(10);
+    let hashbrown = bcrypt.hashSync(banana, salt)
+    return hashbrown;
+}
+
 exports.index = (req, res) => {
     res.render('index');
 }
@@ -22,14 +31,7 @@ exports.createLogin = (req, res) => {
 }
 
 exports.createAccount = async (req, res) => {
-    //--------------------Hash & Salt-----------------------
-    // Sychronous
 
-    const hashbrown = banana => {
-        let salt = bcrypt.genSaltSync(10);
-        let hashbrown = bcrypt.hashSync(banana, salt)
-        return hashbrown;
-    }
     let newUser = {
         username: req.body.username,
         password: hashbrown(req.body.password),
