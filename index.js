@@ -72,7 +72,7 @@ app.post('/login', urlencoderParser, async (req, res) => {
             isAuthenticated: true,
             username: req.body.username
         }
-        res.render('/index');
+        res.redirect('/index');
     } else {
         //login information is not valid
         console.log("Login information is incorrect")
