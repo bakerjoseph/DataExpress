@@ -4,7 +4,8 @@ const expressSession = require('express-session');
 const path = require('path');
 const routes = require('./routes/routes');
 const cookieParser = require('cookie-parser');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -58,12 +59,13 @@ const checkAuth = (req, res, next) => {
 //-------------------Login------------------------------
 app.get('/login', routes.login);
 
-app.post('/login', urlencoderParser, (req, res) => {
+app.post('/login', urlencoderParser, async (req, res) => {
     let username = req.body.username;
     let loginbanana = req.body.password;
-    //needs fixing
-    let url = `http://localhost:3000/api?username=${username}`;
-    if (bcrypt.compareSync(loginbanana, fetch(url))) {
+    let url = `http://localhost:3000/getUser?username=${username}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (bcrypt.compareSync(loginbanana, data.password)) {
         req.session.user = {
             isAuthenticated: true,
             username: req.body.username
@@ -91,7 +93,11 @@ app.get('/logout', (req, res) => {
 app.get('/newUser', routes.createLogin)
 app.post('/newUser', urlencoderParser, routes.createAccount)
 
-app.get('/api', routes.api);
+app.get('/getUser', routes.getUser);
+
+//-------------------Edit User--------------------------
+app.get('/editUser', routes.edit)
+app.post('/edit', urlencoderParser, routes.editPerson)
 
 app.listen(3000);
 
