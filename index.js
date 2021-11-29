@@ -97,7 +97,7 @@ app.get('/getUser', routes.getUser);
 
 //-------------------Edit User--------------------------
 app.get('/editUser', routes.edit)
-app.post('/edit', urlencoderParser, routes.editPerson)
+app.post('/editUser', urlencoderParser, routes.editUser)
 
 app.listen(3000);
 

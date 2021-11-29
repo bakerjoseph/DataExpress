@@ -1,0 +1,48 @@
+/*================ UNIVERSAL STYLE ================*/
+
+    html {
+        background: #ff36a9;
+        background: linear-gradient(90deg, #ff36a9 0%, #9938b5 39%, #faca7c 82%, #89ffd4 100%);
+        color: #000;
+        font-family: 'Mallanna', sans-serif;
+    }
+
+/*=============== LOG IN PAGE STYLE ===============*/
+
+    .loginPage {
+        margin: auto;
+        text-align: center;
+        border: 4px solid #FFF;
+        border-radius: 8px;
+        
+    }
+
+    .newUser {
+        margin: auto;
+        text-align: center;
+    }
+
+/*=============== NEW USER PAGE STYLE =============*/
+
+    .newUserPage {
+        margin: auto;
+        text-align: center;
+        border: 4px solid #fff;
+        border-radius: 8px;
+    }
+
+    form {
+        text-align: left;
+    }
+
+/*============= INDEX/HOME PAGE STYLE ==============*/
+
+    .editUserButton {
+
+    }
+
+    .logOutButton {
+
+    }
+
+/*================ EDIT USER PAGE STYLE ================*/
