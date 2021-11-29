@@ -57,3 +57,33 @@ exports.getUser = async (req, res) => {
     const result = await findUser((req.query.username) ? req.query.username : req.session.user.username);
     res.json(result);
 }
+
+// Edit User
+exports.edit = async (req, res) => {
+    await client.connect();
+    const filteredDocs = await collection.find({ username: req.session.user.username }).toArray();
+    client.close();
+    res.render('editUser', {
+        person: filteredDocs[0]
+    });
+}
+
+exports.editUser = async (req, res) => {
+    await client.connect();
+    const updateResult = await collection.updateOne(
+        { username: req.session.user.username },
+        {
+            $set: {
+                username: req.body.username,
+                password: hashbrown(req.body.password),
+                email: req.body.email,
+                age: req.body.age,
+                ans1: req.body.Q1,
+                ans2: req.body.Q2,
+                ans3: req.body.Q3
+            }
+        }
+    )
+    client.close();
+    res.redirect('/index');
+}

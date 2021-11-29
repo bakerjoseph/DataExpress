@@ -92,6 +92,10 @@ app.post('/newUser', urlencoderParser, routes.createAccount)
 
 app.get('/getUser', routes.getUser);
 
+//-------------------Edit User--------------------------
+app.get('/editUser', routes.edit)
+app.post('/edit', urlencoderParser, routes.editPerson)
+
 app.listen(3000);
 
 console.log('Running at Port 3000');

@@ -1,0 +1,55 @@
+extends layout 
+
+block content 
+    div(class="newUserPage")
+        form(method='post')
+            p Username:
+                br
+                input(type='text' name='username' value=person.username)
+            p New Password:
+                br
+                input(type='text' name='password')
+            p Email:
+                br
+                input(type='text' name='email' value=person.email)
+            p Age:
+                br
+                input(type='number' name='age' value=person.age)
+            P What is your favorite animal? 
+                br
+                label(for="Q1A1") Dog
+                input(type="radio" name="Q1" id="Q1A1" value="dog" checked=((person.ans1 == "dog")? "checked": ""))
+                br
+                label(for="Q1A2") Cat 
+                input(type="radio" name="Q1" id="Q1A2" value="cat" checked=((person.ans1 == "cat")? "checked": ""))
+                br
+                label(for="Q1A3") Goat 
+                input(type="radio" name="Q1" id="Q1A3" value="goat" checked=((person.ans1 == "goat")? "checked": ""))
+                br
+                label(for="Q1A4") Goose 
+                input(type="radio" name="Q1" id="Q1A4" value="goose" checked=((person.ans1 == "goose")? "checked": ""))
+            P What is your perfered language? 
+                br
+                label(for="Q2A1") Eglish
+                input(type="radio" name="Q2" id="Q2A1" value="english" checked=((person.ans2 == "english")? "checked": ""))
+                br
+                label(for="Q2A2") Korean 
+                input(type="radio" name="Q2" id="Q2A2" value="korean" checked=((person.ans2 == "korean")? "checked": ""))
+                br
+                label(for="Q2A3") Chinese 
+                input(type="radio" name="Q2" id="Q2A3" value="chinese" checked=((person.ans2 == "chinese")? "checked": ""))
+                br
+                label(for="Q2A4") French
+                input(type="radio" name="Q2" id="Q2A4" value="french" checked=((person.ans2 == "french")? "checked": ""))
+            P Are you a android? 
+                br
+                label(for="Q3A1") Yes
+                input(type="radio" name="Q3" id="Q3A1" value="yes" checked=((person.ans3 == "yes")? "checked": ""))
+                br
+                label(for="Q3A2") No
+                input(type="radio" name="Q3" id="Q3A2" value="no" checked=((person.ans3 == "no")? "checked": ""))
+                br
+                label(for="Q3A3") Maybe
+                input(type="radio" name="Q3" id="Q3A3" value="maybe" checked=((person.ans3 == "maybe")? "checked": ""))
+            p 
+                input(type='submit' value='Create User')
