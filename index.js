@@ -32,11 +32,12 @@ app.get('/index', (req, res) => {
 
     if (req.cookies.beenHereBefore == 'yes') {
         //have been before show login page
-        res.send(`Already has account. Visited ${req.cookies.visited} times.`);
         checkAuth;
+        res.send(`Visited ${req.cookies.visited} times.`);
     } else {
         res.cookie('beenHereBefore', 'yes', { maxAge: 99999999999999 });
         //have not been before show create user
+        console.log
         visited = 0;
         res.redirect('/login');
 
@@ -46,8 +47,10 @@ app.get('/index', (req, res) => {
 //------------------Authentication----------------------
 const checkAuth = (req, res, next) => {
     if (res.session.user && req.session.user.isAuthenticated) {
+        console.log("User is athenticated")
         next();
     } else {
+        console.log("User is not athenticated")
         res.redirect('/login');
     }
 };
