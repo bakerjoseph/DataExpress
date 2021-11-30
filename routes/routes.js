@@ -42,9 +42,9 @@ exports.createAccount = async (req, res) => {
         ans3: req.body.Q3
     }
     await client.connect();
-    await collection.insertOne(newUser);
+    const result = await collection.insertOne(newUser);
     client.close();
-    res.redirect('/index')
+    res.redirect('/index');
 }
 
 // Get username's password
@@ -63,7 +63,7 @@ exports.getUser = async (req, res) => {
 // Edit User
 exports.edit = async (req, res) => {
     await client.connect();
-    const filteredDocs = await collection.find({ username: req.session.user.username }).toArray();
+    const filteredDocs = await collection.find({ "username": req.session.user.username }).toArray();
     client.close();
     res.render('editUser', {
         person: filteredDocs[0]
