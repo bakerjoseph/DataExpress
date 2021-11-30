@@ -6,17 +6,19 @@ block content
         form(method='post')
             p Username:
                 br
-                input(type='text' name='username')
+                input(class='user-text' type='text' name='username')
             p Password:
                 br
-                input(type='text' name='password')
+                input(class='user-text' type='text' name='password')
             p Email:
                 br
-                input(type='text' name='email')
+                input(class='user-text' type='text' name='email')
             p Age:
                 br
-                input(type='number' name='age')
-            P What is your favorite animal? 
+                input(class='user-text' type='number' name='age')
+
+            P(class='questions') What is your favorite animal? 
+
                 br
                 label(for="Q1A1") Dog
                 input(type="radio" name="Q1" id="Q1A1" value="dog")
@@ -29,7 +31,8 @@ block content
                 br
                 label(for="Q1A4") Goose 
                 input(type="radio" name="Q1" id="Q1A4" value="goose")
-            P What is your perfered language? 
+
+            P(class='questions') What is your perfered language? 
                 br
                 label(for="Q2A1") Eglish
                 input(type="radio" name="Q2" id="Q2A1" value="english")
@@ -42,7 +45,7 @@ block content
                 br
                 label(for="Q2A4") French
                 input(type="radio" name="Q2" id="Q2A4" value="french")
-            P Are you a android? 
+            P(class='questions') Are you a android? 
                 br
                 label(for="Q3A1") Yes
                 input(type="radio" name="Q3" id="Q3A1" value="yes")
@@ -53,4 +56,4 @@ block content
                 label(for="Q3A3") Maybe
                 input(type="radio" name="Q3" id="Q3A3" value="maybe")
             p 
-                input(type='submit' value='Create User')
+                input(class='button' type='submit' value='Create User')
