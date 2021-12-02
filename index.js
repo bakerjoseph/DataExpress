@@ -98,8 +98,11 @@ app.post('/newUser', urlencoderParser, routes.createAccount)
 app.get('/getUser', routes.getUser);
 
 //-------------------Edit User--------------------------
-app.get('/editUser', routes.edit)
-app.post('/editUser', urlencoderParser, routes.editUser)
+app.get('/editUser', routes.edit);
+app.post('/editUser', urlencoderParser, routes.editUser);
+
+//----------------------API-----------------------------
+app.get('/api', routes.api);
 
 app.listen(3000);
 

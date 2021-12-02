@@ -88,3 +88,69 @@ exports.editUser = async (req, res) => {
     client.close();
     res.redirect('/index');
 }
+
+// API Call to get the totals for each question
+exports.api = async (req, res) => {
+    // Get all users
+    await client.connect();
+    const result = await collection.find({}).toArray();
+    client.close();
+    let q1dog = 0, q1cat = 0, q1goat = 0, q1goose = 0;
+    let q2english = 0, q2korean = 0, q2chinese = 0, q2french = 0;
+    let q3yes = 0, q3no = 0, q3maybe = 0;
+    for (let i = 0; i < result.length; i++) {
+        switch (result[i].ans1) {
+            case "dog":
+                q1dog++;
+                break;
+            case "cat":
+                q1cat++;
+                break;
+            case "goat":
+                q1goat++;
+                break;
+            case "goose":
+                q1goose++;
+                break;
+        }
+        switch (result[i].ans2) {
+            case "english":
+                q2english++;
+                break;
+            case "korean":
+                q2korean++;
+                break;
+            case "chinese":
+                q2chinese++;
+                break;
+            case "french":
+                q2french++;
+                break;
+        }
+        switch (result[i].ans3) {
+            case "yes":
+                q3yes++;
+                break;
+            case "no":
+                q3no++;
+                break;
+            case "maybe":
+                q3maybe++;
+                break;
+        }
+    }
+    const totals = {
+        dog1: q1dog,
+        cat1: q1cat,
+        goat1: q1goat,
+        goose1: q1goose,
+        english2: q2english,
+        korean2: q2korean,
+        chinese2: q2chinese,
+        french2: q2french,
+        yes3: q3yes,
+        no3: q3no,
+        mayb3: q3maybe
+    }
+    res.json(totals);
+}
