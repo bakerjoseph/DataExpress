@@ -77,7 +77,6 @@ exports.editUser = async (req, res) => {
         {
             $set: {
                 username: req.body.username,
-                password: hashbrown(req.body.password),
                 email: req.body.email,
                 age: req.body.age,
                 ans1: req.body.Q1,
