@@ -4,8 +4,7 @@ extends layout
 
 block content 
     div(class="editUserButton")
-        p Edit Profile
+        a(href="/editUser") Edit Profile
     div(class="logOutButton")
-        p(onClick="") Log Out
-
-    script()
+        a(href="/logout") Log Out
+    div(class="vistedCount") You have visted: #{visitedCount} time(s)

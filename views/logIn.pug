@@ -3,14 +3,15 @@ extends layout
 
 block content 
     div(class="loginPage")
-        form(method='post')
+        form(class='form' method='post')
             p Username:
                 br
-                input(type='text' name='username')
+                input(class='user-text' type='text' name='username')
             p Password:
                 br
-                input(type='text' name='password')
+                input(class='user-text' type='text' name='password')
             p 
-                input(type='submit' value='Log In')
+                input(class='button' type='submit' value='Log In')
+            a(href="http://localhost:3000/newUser") Create New Account Here
     div(class="newUser")
-        a(href="http://localhost:3000/newUser") Create New Account Here
+        

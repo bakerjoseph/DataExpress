@@ -2,9 +2,43 @@
 
     html {
         background: #ff36a9;
-        background: linear-gradient(90deg, #ff36a9 0%, #9938b5 39%, #faca7c 82%, #89ffd4 100%);
-        color: #000;
+        background: linear-gradient(90deg, #1f2a85 0%, #9938b5 50%, #ff36a9 100%);
+        color: #fff;
         font-family: 'Mallanna', sans-serif;
+    }
+
+    .button {
+        background-color: transparent;
+        border: 2px solid white;
+        color: #FFF;
+        border-radius: 8px;
+        width: 170px;
+        margin: auto;
+        padding: 5px;
+        text-align: center;
+        font-size: 15px;
+
+    }
+
+    .button:hover {
+        color: #FFF;
+        background-color: #5378e0;
+        box-shadow: 0 2px 10px #5378e0;
+        cursor: pointer;
+    }
+
+    .form {
+        text-align: center;
+    }
+
+    a {
+        color: gold;
+    }
+
+    .user-text {
+        font-size: 18px;
+        font-family: 'Mallanna', sans-serif;
+        font-weight: bolder;
     }
 
 /*=============== LOG IN PAGE STYLE ===============*/
@@ -12,9 +46,11 @@
     .loginPage {
         margin: auto;
         text-align: center;
+        font-size: 24px;
         border: 4px solid #FFF;
         border-radius: 8px;
-        
+        width: 700px;
+        padding: 10px
     }
 
     .newUser {
@@ -27,12 +63,11 @@
     .newUserPage {
         margin: auto;
         text-align: center;
-        border: 4px solid #fff;
-        border-radius: 8px;
+        font-size: 18px;
     }
 
-    form {
-        text-align: left;
+    .questions {
+        font-size: 20px;
     }
 
 /*============= INDEX/HOME PAGE STYLE ==============*/

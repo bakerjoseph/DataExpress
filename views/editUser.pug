@@ -6,9 +6,6 @@ block content
             p Username:
                 br
                 input(type='text' name='username' value=person.username)
-            p New Password:
-                br
-                input(type='text' name='password')
             p Email:
                 br
                 input(type='text' name='email' value=person.email)
@@ -18,38 +15,71 @@ block content
             P What is your favorite animal? 
                 br
                 label(for="Q1A1") Dog
-                input(type="radio" name="Q1" id="Q1A1" value="dog" checked=((person.ans1 == "dog")? "checked": ""))
+                if person.ans1 == "dog"
+                    input(type="radio" name="Q1" id="Q1A1" value="dog" checked)
+                else 
+                    input(type="radio" name="Q1" id="Q1A1" value="dog")
                 br
                 label(for="Q1A2") Cat 
-                input(type="radio" name="Q1" id="Q1A2" value="cat" checked=((person.ans1 == "cat")? "checked": ""))
+                if person.ans1 == "cat"
+                    input(type="radio" name="Q1" id="Q1A1" value="cat" checked)
+                else 
+                    input(type="radio" name="Q1" id="Q1A1" value="cat")
                 br
                 label(for="Q1A3") Goat 
-                input(type="radio" name="Q1" id="Q1A3" value="goat" checked=((person.ans1 == "goat")? "checked": ""))
+                if person.ans1 == "goat"
+                    input(type="radio" name="Q1" id="Q1A1" value="goat" checked)
+                else   
+                    input(type="radio" name="Q1" id="Q1A1" value="goat")
                 br
                 label(for="Q1A4") Goose 
-                input(type="radio" name="Q1" id="Q1A4" value="goose" checked=((person.ans1 == "goose")? "checked": ""))
+                if person.ans1 == "goose"
+                    input(type="radio" name="Q1" id="Q1A1" value="goose" checked)
+                else 
+                    input(type="radio" name="Q1" id="Q1A1" value="goose")
             P What is your perfered language? 
                 br
                 label(for="Q2A1") Eglish
-                input(type="radio" name="Q2" id="Q2A1" value="english" checked=((person.ans2 == "english")? "checked": ""))
+                if person.ans2 == "english"
+                    input(type="radio" name="Q2" id="Q2A1" value="english" checked)
+                else  
+                    input(type="radio" name="Q2" id="Q2A1" value="english")
                 br
                 label(for="Q2A2") Korean 
-                input(type="radio" name="Q2" id="Q2A2" value="korean" checked=((person.ans2 == "korean")? "checked": ""))
+                if person.ans2 == "korean"
+                    input(type="radio" name="Q2" id="Q2A2" value="korean" checked)
+                else 
+                    input(type="radio" name="Q2" id="Q2A2" value="korean")
                 br
                 label(for="Q2A3") Chinese 
-                input(type="radio" name="Q2" id="Q2A3" value="chinese" checked=((person.ans2 == "chinese")? "checked": ""))
+                if person.ans2 == "chinese"
+                    input(type="radio" name="Q2" id="Q2A3" value="chinese" checked)
+                else    
+                    input(type="radio" name="Q2" id="Q2A3" value="chinese")
                 br
                 label(for="Q2A4") French
-                input(type="radio" name="Q2" id="Q2A4" value="french" checked=((person.ans2 == "french")? "checked": ""))
+                if person.ans2 == "french"
+                    input(type="radio" name="Q2" id="Q2A4" value="french" checked)
+                else 
+                    input(type="radio" name="Q2" id="Q2A4" value="french")
             P Are you a android? 
                 br
-                label(for="Q3A1") Yes
-                input(type="radio" name="Q3" id="Q3A1" value="yes" checked=((person.ans3 == "yes")? "checked": ""))
+                label(for="Q3A1") Yes 
+                if person.ans3 == "yes"
+                    input(type="radio" name="Q3" id="Q3A1" value="yes" checked)
+                else 
+                    input(type="radio" name="Q3" id="Q3A1" value="yes")
                 br
                 label(for="Q3A2") No
-                input(type="radio" name="Q3" id="Q3A2" value="no" checked=((person.ans3 == "no")? "checked": ""))
+                if person.ans3 == "no"
+                    input(type="radio" name="Q3" id="Q3A2" value="no" checked)
+                else   
+                    input(type="radio" name="Q3" id="Q3A2" value="no")
                 br
                 label(for="Q3A3") Maybe
-                input(type="radio" name="Q3" id="Q3A3" value="maybe" checked=((person.ans3 == "maybe")? "checked": ""))
+                if person.ans3 == "maybe"
+                    input(type="radio" name="Q3" id="Q3A3" value="maybe" checked)
+                else   
+                    input(type="radio" name="Q3" id="Q3A3" value="maybe")
             p 
-                input(type='submit' value='Create User')
+                input(type='submit' value='Update User')
