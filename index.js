@@ -28,19 +28,23 @@ const urlencoderParser = express.urlencoded({
 
 //---------------------Cookies----------------------------
 app.get('/index', async (req, res) => {
+    admin = false;
     visited++;
     res.cookie('visited', visited, { maxAge: 99999999999999999999999999999 });
 
-    let url = `http://localhost:3000/getUser?username=${req.session.user.username}`;
-    const response = await fetch(url);
-    const data = await response.json();
+    if (req.session.user) {
+        let url = `http://localhost:3000/getUser?username=${req.session.user.username}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        admin = data.isAdmin;
+    }
 
     if (req.cookies.beenHereBefore == 'yes') {
         //have been before show login page
         checkAuth;
         res.render('index', {
             visitedCount: req.cookies.visited,
-            isAdmin: data.isAdmin
+            isAdmin: admin
         });
     } else {
         res.cookie('beenHereBefore', 'yes', { maxAge: 99999999999999 });
