@@ -45,7 +45,7 @@ exports.createAccount = async (req, res) => {
     await client.connect();
     const result = await collection.insertOne(newUser);
     client.close();
-    res.redirect('/index');
+    res.redirect('/login');
 }
 
 // Get username's password
