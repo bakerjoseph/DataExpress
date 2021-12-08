@@ -27,15 +27,20 @@ const urlencoderParser = express.urlencoded({
 });
 
 //---------------------Cookies----------------------------
-app.get('/index', (req, res) => {
+app.get('/index', async (req, res) => {
     visited++;
     res.cookie('visited', visited, { maxAge: 99999999999999999999999999999 });
+
+    let url = `http://localhost:3000/getUser?username=${req.session.user.username}`;
+    const response = await fetch(url);
+    const data = await response.json();
 
     if (req.cookies.beenHereBefore == 'yes') {
         //have been before show login page
         checkAuth;
         res.render('index', {
-            visitedCount: req.cookies.visited
+            visitedCount: req.cookies.visited,
+            isAdmin: data.isAdmin
         });
     } else {
         res.cookie('beenHereBefore', 'yes', { maxAge: 99999999999999 });
@@ -49,7 +54,7 @@ app.get('/index', (req, res) => {
 
 //------------------Authentication----------------------
 const checkAuth = (req, res, next) => {
-    if (res.session.user && req.session.user.isAuthenticated) {
+    if (req.session.user && req.session.user.isAuthenticated) {
         console.log("User is athenticated")
         next();
     } else {
@@ -90,6 +95,11 @@ app.get('/logout', (req, res) => {
         }
     })
 });
+
+//--------------------Admin Page------------------------
+app.get('/admin', routes.adminPage)
+app.get('/auth/:username/:isAdmin', routes.auth)
+app.get('/delete/:username', routes.delete)
 
 //-------------------Create User------------------------
 app.get('/newUser', routes.createLogin)

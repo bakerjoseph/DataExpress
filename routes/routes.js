@@ -39,7 +39,8 @@ exports.createAccount = async (req, res) => {
         age: req.body.age,
         ans1: req.body.Q1,
         ans2: req.body.Q2,
-        ans3: req.body.Q3
+        ans3: req.body.Q3,
+        isAdmin: false
     }
     await client.connect();
     const result = await collection.insertOne(newUser);
@@ -81,7 +82,8 @@ exports.editUser = async (req, res) => {
                 age: req.body.age,
                 ans1: req.body.Q1,
                 ans2: req.body.Q2,
-                ans3: req.body.Q3
+                ans3: req.body.Q3,
+                isAdmin: false
             }
         }
     )
@@ -153,4 +155,36 @@ exports.api = async (req, res) => {
         mayb3: q3maybe
     }
     res.json(totals);
+}
+
+// Admin Duties
+exports.adminPage = async (req, res) => {
+    await client.connect();
+    const findResult = await collection.find({}).toArray();
+
+    client.close();
+    res.render('admin', {
+        users: findResult
+    })
+
+}
+
+exports.delete = async (req, res) => {
+    await client.connect();
+    const deleteResult = await collection.deleteOne({ username: (req.params.username) });
+    client.close();
+    res.redirect('/admin');
+}
+
+exports.auth = async (req, res) => {
+    await client.connect();
+    const updateResult = await collection.updateOne(
+        { username: req.params.username },
+        {
+            $set: {
+                isAdmin: ((req.params.isAdmin == true) ? false : true)
+            }
+        })
+    client.close();
+    res.redirect('/admin')
 }

@@ -3,6 +3,8 @@
 extends layout 
 
 block content 
+    if isAdmin == true  
+        a(href="/admin") Admin Page
     div(class="editUserButton")
         a(href="/editUser") Edit Profile
     div(class="logOutButton")

@@ -1,0 +1,19 @@
+extends layout 
+
+block content   
+    table(class='gridtable')
+        tr 
+            th User Name 
+            th Are You An Admin 
+            th 
+            th 
+        each item in users     
+            tr 
+                td  #{item.username}
+                td  #{item.isAdmin}
+                td 
+                    a(href='/auth/' + item.username + '/' + item.isAdmin) Authentication
+                td 
+                    a(href='/delete/' + item.username) Delete
+
+    a(href='/index') Home
